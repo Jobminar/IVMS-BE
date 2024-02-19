@@ -14,9 +14,10 @@ app.use(cors())
 
 app.use('/',router)
 
-const PORT=process.env.PORT || 6000
+const PORT=process.env.PORT || 4000
 
 mongoose.connect(process.env.MONGO_URl,{
+
 })
 .then(()=>console.log('MongoDB connected'))
 .catch(error=>console.log(error,"failed to connect mongoDb"))

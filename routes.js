@@ -12,6 +12,6 @@ router.post("/postcontact",contactController.createContact)
 router.get("/getcontact",contactController.getAllContact)
 
 router.post("/postdonate",donateController.createDonate)
-router.get("/getdonate",donateController.getAllDonate)
+router.get("/getdonatedata",donateController.getAllDonate)
 
 export default  router
