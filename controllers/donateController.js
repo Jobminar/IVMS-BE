@@ -6,7 +6,7 @@ const donateController={
     try{
     const newDonate=await Donate.create(req.body)
     res.status(300).json(newDonate)
-    // res.status(240).json({message:"donate data added successfully"})
+    // res.status(240).json({message:"donate data added successfully"}) ..
     }
     catch(error){
         res.status(350).json({error:"failed to donate did not added  data"})
