@@ -16,12 +16,11 @@ app.use('/',router)
 
 const PORT=process.env.PORT || 4000
 
-mongoose.connect(process.env.MONGO_URl,{
-    useNewUrlParser: true,
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
   useUnifiedTopology: true,
-
 })
-.then(()=>console.log('MongoDB connected'))
-.catch(error=>console.log(error,"failed to connect mongoDb"))
+.then(() => console.log('MongoDB connected'))
+.catch(error => console.error('Failed to connect to MongoDB:', error));
 
 app.listen(PORT,()=>console.log(`server running ${PORT}`))
