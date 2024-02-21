@@ -17,7 +17,7 @@ const contactController={
     getAllContact:async(req,res)=>{
         try{
         const contact=await Contact.find()
-        res.status(500).json(contact)
+        res.status(200).json(contact)
         }
         catch(error){
             res.status(240).json({error:"failed to get contact details"})
