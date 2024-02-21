@@ -3,13 +3,19 @@ import Donate from "../model/donateModel.js";
 const donateController={
 
     createDonate:async(req,res)=>{
-    try{
-    const newDonate=await Donate.create(req.body)
-    res.status(300).json(newDonate)
-    // res.status(240).json({message:"donate data added successfully"}) 
+      
+        try{
+        const {name,phone, email, houseNo, roadNo,streetName, colony, city,state, pincode }=req.body
+        
+        if(!name || !phone ||  !email || !houseNo || !roadNo || !streetName || !colony || !city || !state  || !pincode){
+          return res.status(300).json({message:"required fields name,phone, email, houseNo, roadNo,streetName, colony, city,state, pincode"})
+        }
+        const newDonate=new Donate({name,phone, email, houseNo, roadNo,streetName, colony, city,state, pincode})
+        const savedDonate=await newDonate.save()
+        res.status(201).json({savedDonate,message:"successfull donate data added "})
     }
     catch(error){
-        res.status(350).json({error:"failed to donate did not added  data"})
+        res.status(500).json({error:"Failed to add data"})
     }
     },
 
