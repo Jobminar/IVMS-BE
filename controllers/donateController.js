@@ -8,7 +8,7 @@ const donateController={
         const {name,phone, email, houseNo, roadNo,streetName, colony, city,state, pincode }=req.body
         
         if(!name || !phone ||  !email || !houseNo || !roadNo || !streetName || !colony || !city || !state  || !pincode){
-          return res.status(300).json({message:"required fields name,phone, email, houseNo, roadNo,streetName, colony, city,state, pincode"})
+          return res.status(300).json({message:"Required fields name,phone, email, houseNo, roadNo,streetName, colony, city,state, pincode"})
         }
         const newDonate=new Donate({name,phone, email, houseNo, roadNo,streetName, colony, city,state, pincode})
         const savedDonate=await newDonate.save()
@@ -19,14 +19,13 @@ const donateController={
     }
     },
 
-getAllDonate:async(req,res)=>{
-    try{
-    const donate=await Donate.find()
-    res.status(450).json(donate)
+    getAllDonate: async (req, res) => {
+        try {
+            const donate = await Donate.find();
+            res.status(200).json(donate);
+        } catch (error) {
+            res.status(500).json({ error: "Failed to get the donate data" });
+        }
     }
-    catch(error){
-     res.status(320).json({error:"failed to get the donate data"})
-    }
-}
 }
 export default donateController  
